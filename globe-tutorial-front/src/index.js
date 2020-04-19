@@ -9,14 +9,15 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
+import usersReducer from './reducers/usersReducer.js'
 
 //somewhat temporary below, to fix error, for now
 //all of below should be incorporated into a more organized fileset outside of
 //here but to demosntrate getting things up and running for now
-const users = () => []
+//changed some code to an external reducers/usersReducers file, now moving more around wiht next commit
 const reducer = combineReducers({
-  users
-  // shorthand syntax for users: users
+  users: usersReducer
+  // shorthand syntax for users: users is users, when using similar naming conventions, incl having import users in the import list above, in this case changed for clarity of this block of code
 
 })
 
