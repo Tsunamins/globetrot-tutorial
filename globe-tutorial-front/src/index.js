@@ -4,27 +4,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
 // added
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+//removed store dependencies to external store file
+//moved thunk to store.js also
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router} from 'react-router-dom';
-import usersReducer from './reducers/usersReducer.js'
+//removed usersReducer to external store file
+import store from './store.js'
 
-//somewhat temporary below, to fix error, for now
-//all of below should be incorporated into a more organized fileset outside of
-//here but to demosntrate getting things up and running for now
-//changed some code to an external reducers/usersReducers file, now moving more around wiht next commit
-const reducer = combineReducers({
-  users: usersReducer
-  // shorthand syntax for users: users is users, when using similar naming conventions, incl having import users in the import list above, in this case changed for clarity of this block of code
-
-})
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
-
-//create store takes args: a reducer (not made yet), and the above middleware line
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+//moved store related code to external store file
 
 ReactDOM.render(
   <Provider store={store} >
