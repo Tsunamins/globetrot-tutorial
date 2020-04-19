@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_18_235624) do
+ActiveRecord::Schema.define(version: 2020_04_19_004439) do
 
   create_table "attractions", force: :cascade do |t|
     t.string "name"
@@ -37,12 +37,13 @@ ActiveRecord::Schema.define(version: 2020_04_18_235624) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "start_date"
-    t.string "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "user_id"
     t.integer "location_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +53,14 @@ ActiveRecord::Schema.define(version: 2020_04_18_235624) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "hometown_id"
+  end
+
+  create_table "visits", force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "attraction_id"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
